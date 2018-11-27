@@ -35,4 +35,19 @@ public class EmployeeService {
     public void addNewEmployee(Employee e){
         allEmployee.add(e);
     }
+
+    public void changeEmployeeInfo(Employee employee) {
+        for (Employee e: allEmployee){
+            if (e.getId() == employee.getId()){
+                updateInfo(e, employee);
+                break;
+            }
+        }
+    }
+
+    private void updateInfo(Employee oldInfo, Employee newInfo) {
+        oldInfo.setAge(newInfo.getAge());
+        oldInfo.setGender(newInfo.getGender());
+        oldInfo.setName(newInfo.getName());
+    }
 }

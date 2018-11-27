@@ -44,5 +44,12 @@ public class EmployeeResource {
         employeeService.addNewEmployee(employee);
         return "Employee with name: "+employee.getName()+" added.";
     }
+    @PutMapping(value = "/employees/{id}", produces = "application/json")
+    String changeEmployeeInfo(@RequestBody Employee employee, @PathVariable int id){
+        employee.setId(id);
+        employeeService.changeEmployeeInfo(employee);
+        return "Employee info updated.";
+    }
+
 }
 
