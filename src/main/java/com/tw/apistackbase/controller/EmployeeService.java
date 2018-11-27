@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeService {
     private List<Employee> allEmployee = new ArrayList<>();
-    private Employee e1 = new Employee(0, "Xiaoming", 20, "M");
+    private Employee e1 = new Employee(0, "Xiaoming", 20, "M", 8000);
     private Employee e2 = new Employee(1,"Xiaohong", 19, "F");
     private Employee e3 = new Employee(2, "Xiaozhi", 15, "M");
     private Employee e4 = new Employee(3, "Xiaogang", 16, "M");
