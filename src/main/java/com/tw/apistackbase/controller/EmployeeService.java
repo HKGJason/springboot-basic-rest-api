@@ -20,7 +20,7 @@ public class EmployeeService {
     }
 
     public void deletebyId(int id) {
-        allEmployee.remove(id);
+        allEmployee.remove(Integer.valueOf(id));
     }
 
     public List<Employee> getAllEmployee(){return this.allEmployee;}
