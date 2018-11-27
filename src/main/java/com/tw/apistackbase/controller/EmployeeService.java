@@ -1,8 +1,11 @@
 package com.tw.apistackbase.controller;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EmployeeService {
     private List<Employee> allEmployee = new ArrayList<>();
     private Employee e1 = new Employee(0, "Xiaoming", 20, "M");
@@ -16,12 +19,12 @@ public class EmployeeService {
         allEmployee.add(e4);
     }
 
-    public void deleteByID(int id) {
+    public void deletebyId(int id) {
         allEmployee.remove(id);
     }
 
     public List<Employee> getAllEmployee(){return this.allEmployee;}
-    public void allNewEmployee(Employee e){
+    public void addNewEmployee(Employee e){
         allEmployee.add(e);
     }
 }

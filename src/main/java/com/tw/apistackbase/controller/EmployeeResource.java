@@ -1,21 +1,20 @@
 package com.tw.apistackbase.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
 public class EmployeeResource {
+    private EmployeeService employeeService;
     private final Logger log = Logger.getLogger(this.getClass().getName());
-
-    EmployeeService employeeService = new EmployeeService();
-    @RequestMapping(value = "/employees", produces = "application/json")
+    @Autowired
+    public EmployeeResource(EmployeeService service){
+        this.employeeService  = service;
+    }
+    @GetMapping(value = "/employees", produces = "application/json")
     public List<Employee> listAllEmployee(){
 
         return employeeService.getAllEmployee();
@@ -27,17 +26,23 @@ public class EmployeeResource {
     }
     */
    // @RequestMapping(value = "/employees/add", produces = )
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping(value = "/employees/{id}")
     String deleteEmployee(@PathVariable int id){
-        employeeService.deleteByID(id);
-        return "Employee with id "+id+"deleted";
+        employeeService.deletebyId(id);
+        return "Employee deleted";
     }
+    /*
     @PostMapping("/employees/{id}/{name}/{age}/{gender}")
     String addNewEmployee(@PathVariable int id, @PathVariable String name, @PathVariable int age, @PathVariable String gender){
         Employee newEmployee = new Employee(id, name, age, gender);
         employeeService.allNewEmployee(newEmployee);
         return "New Employee with name: "+name+"added.";
     }
-
+*/
+    @PostMapping(value = "/employees", produces = "application/json")
+    String addNewEmployee(@RequestBody Employee employee){
+        employeeService.addNewEmployee(employee);
+        return "Employee with name: "+employee.getName()+" added.";
+    }
 }
 
