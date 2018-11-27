@@ -21,14 +21,14 @@ public class EmployeeService {
     }
 
     public void deletebyId(int id) {
-        Employee employee;
+        Employee employee = null;
         for (Employee e: allEmployee){
             if (e.getId()==id) {
                 employee = e;
+                allEmployee.remove(e);
                 break;
             }
         }
-        allEmployee.remove(employee);
     }
 
     public List<Employee> getAllEmployee(){return this.allEmployee;}
