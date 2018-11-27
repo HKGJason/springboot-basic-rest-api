@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -49,5 +50,17 @@ public class EmployeeService {
         oldInfo.setAge(newInfo.getAge());
         oldInfo.setGender(newInfo.getGender());
         oldInfo.setName(newInfo.getName());
+    }
+
+    public List<Employee> findEmployeeByGender(String gender) {
+        /*
+        List<Employee> target = new ArrayList<>();
+        for (Employee e: allEmployee){
+            if (e.getGender().equals(gender))
+                target.add(e);
+        }
+        */
+        List<Employee> target = allEmployee.stream().filter(e->gender.equals(e.getGender())).collect(Collectors.toList());
+        return target;
     }
 }

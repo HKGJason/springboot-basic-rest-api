@@ -14,11 +14,14 @@ public class EmployeeResource {
     public EmployeeResource(EmployeeService service){
         this.employeeService  = service;
     }
-    @GetMapping(value = "/employees", produces = "application/json")
-    public List<Employee> listAllEmployee(){
 
+    @RequestMapping(value = "/employees", produces = "application/json", method = RequestMethod.GET)
+    public List<Employee> listAllEmployee(@RequestParam(value = "gender", required =false, defaultValue = "null") String gender){
+        if (!gender.equals("null"))
+            return employeeService.findEmployeeByGender(gender);
         return employeeService.getAllEmployee();
     }
+
     /*public ResponseEntity<String> getAll() {
 
         return ResponseEntity.ok(Employee);
@@ -50,6 +53,12 @@ public class EmployeeResource {
         employeeService.changeEmployeeInfo(employee);
         return "Employee info updated.";
     }
+    /*
+    @GetMapping(value ="/employees", produces = "application/json")
+    public List<Employee> getEmployeeByGender(@RequestParam("gender") String gender){
+        return employeeService.findEmployeeByGender(gender);
+    }
+    */
 
 }
 
