@@ -28,8 +28,16 @@ public class EmployeeResource {
     */
    // @RequestMapping(value = "/employees/add", produces = )
     @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable int id){
+    String deleteEmployee(@PathVariable int id){
         employeeService.deleteByID(id);
+        return "Employee with id "+id+"deleted";
     }
+    @PostMapping("/employees/{id}/{name}/{age}/{gender}")
+    String addNewEmployee(@PathVariable int id, @PathVariable String name, @PathVariable int age, @PathVariable String gender){
+        Employee newEmployee = new Employee(id, name, age, gender);
+        employeeService.allNewEmployee(newEmployee);
+        return "New Employee with name: "+name+"added.";
+    }
+
 }
 

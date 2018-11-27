@@ -21,5 +21,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployee(){return this.allEmployee;}
-
+    public void allNewEmployee(Employee e){
+        allEmployee.add(e);
+    }
 }
