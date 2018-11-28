@@ -33,4 +33,8 @@ public class CompanyService {
     public Company getCompanybyIndex(int id) {
         return allCompany.get(id-1);
     }
+
+    public List<Employee> getEmployeebyCompany(int index) {
+        return allCompany.get(index-1).getAllemployee();
+    }
 }

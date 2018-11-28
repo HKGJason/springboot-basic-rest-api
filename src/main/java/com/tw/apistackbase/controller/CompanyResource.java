@@ -27,6 +27,11 @@ public class CompanyResource {
     Company getCompanyByIndex(@PathVariable int id){
         return this.companyService.getCompanybyIndex(id);
     }
+    @GetMapping(value = "/companies/{index}/employees", produces = "application/json")
+    List<Employee> getEmployeeByCompany(@PathVariable int index)
+    {
+        return this.companyService.getEmployeebyCompany(index);
+    }
 
 
 }
