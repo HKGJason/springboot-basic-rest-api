@@ -1,8 +1,12 @@
 package com.tw.apistackbase.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -48,10 +52,11 @@ public class EmployeeResource {
         return "New Employee with name: "+name+"added.";
     }
 */
-    @PostMapping(value = "/employees", produces = "application/json")
-    String addNewEmployee(@RequestBody Employee employee){
+    @PostMapping(value = "/employees")
+    ResponseEntity<String> addNewEmployee(@RequestBody Employee employee){
         employeeService.addNewEmployee(employee);
-        return "Employee with name: "+employee.getName()+" added.";
+        URI location = URI.create("/employees/"+employee.getId());
+        return ResponseEntity.created(location).header("Header").body("Employeee Created.");
     }
     @PutMapping(value = "/employees/{id}", produces = "application/json")
     String changeEmployeeInfo(@RequestBody Employee employee, @PathVariable int id){
