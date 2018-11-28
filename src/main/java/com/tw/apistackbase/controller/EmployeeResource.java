@@ -16,9 +16,15 @@ public class EmployeeResource {
     }
 
     @RequestMapping(value = "/employees", produces = "application/json", method = RequestMethod.GET)
-    public List<Employee> listAllEmployee(@RequestParam(value = "gender", required =false, defaultValue = "null") String gender){
+    public List<Employee> listAllEmployee(@RequestParam(value = "gender", required =false,defaultValue = "null") String gender,
+                                          @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                          @RequestParam(value = "pageSize", required = false, defaultValue = "0") int pageSize
+                                          ){
         if (!gender.equals("null"))
             return employeeService.findEmployeeByGender(gender);
+        if (page != 0 && pageSize != 0){
+            return employeeService.findEmployeeByPageRange(page - 1 , page + pageSize - 1);
+        }
         return employeeService.getAllEmployee();
     }
 

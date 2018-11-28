@@ -63,4 +63,8 @@ public class EmployeeService {
         List<Employee> target = allEmployee.stream().filter(e->gender.equals(e.getGender())).collect(Collectors.toList());
         return target;
     }
+
+    public List<Employee> findEmployeeByPageRange(int startIndex, int endIndex) {
+        return allEmployee.subList(startIndex, endIndex);
+    }
 }
