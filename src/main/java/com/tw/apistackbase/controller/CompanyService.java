@@ -29,4 +29,8 @@ public class CompanyService {
     public void addNewCompany(Company company) {
         allCompany.add(company);
     }
+
+    public Company getCompanybyIndex(int id) {
+        return allCompany.get(id-1);
+    }
 }

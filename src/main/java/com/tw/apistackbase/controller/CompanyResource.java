@@ -1,10 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -26,5 +23,10 @@ public class CompanyResource {
         companyService.addNewCompany(company);
         return "New Company added.";
     }
+    @GetMapping(value = "/companies/{id}", produces = "application/json")
+    Company getCompanyByIndex(@PathVariable int id){
+        return this.companyService.getCompanybyIndex(id);
+    }
+
 
 }
