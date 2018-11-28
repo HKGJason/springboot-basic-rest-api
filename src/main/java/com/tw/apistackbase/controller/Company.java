@@ -12,7 +12,7 @@ public class Company {
         this.companyName = name;
         this.employeesNumber = allemployee.size();
     }
-    public void setEmployeesNumber(){
+    public void setEmployeesNumber(int tmp){
         this.employeesNumber = allemployee.size();
     }
     public int getEmployeesNumber() {
@@ -30,5 +30,9 @@ public class Company {
     }
     public void hireEmployee(Employee e){
         this.allemployee.add(e);
+    }
+
+    public void setEmployeeEmpty() {
+        allemployee.clear();
     }
 }

@@ -41,4 +41,13 @@ public class CompanyService {
     public List<Company> getCompanybyPageRange(int start, int end) {
         return allCompany.subList(start, end);
     }
+
+    public Company updateCompanyInfo(int index, Company company) {
+        allCompany.get(index-1).setCompanyName(company.getCompanyName());
+        return allCompany.get(index-1);
+    }
+
+    public void deleteEmployeeByCompany(int index) {
+        allCompany.get(index-1).setEmployeeEmpty();
+    }
 }

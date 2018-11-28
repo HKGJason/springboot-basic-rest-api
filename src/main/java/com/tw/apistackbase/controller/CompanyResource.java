@@ -35,6 +35,15 @@ public class CompanyResource {
     {
         return this.companyService.getEmployeebyCompany(index);
     }
+    @PutMapping(value = "/companies/{index}", produces = "application/json")
+    Company updateCompanyInfo(@RequestBody Company company, @PathVariable int index){
+        return this.companyService.updateCompanyInfo(index, company);
+    }
+    @DeleteMapping(value = "/companies/{index}",produces = "application/json")
+    String deleteEmployeeBelongToCompany(@PathVariable int index){
+        this.companyService.deleteEmployeeByCompany(index);
+        return "Employee deleted";
+    }
 
 
 
