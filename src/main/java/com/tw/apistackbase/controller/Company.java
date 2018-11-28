@@ -5,14 +5,18 @@ import java.util.*;
 public class Company {
     private String companyName;
     private int employeesNumber;
-    private List<Employee> allemployee = new ArrayList<>() ;
+    private List<Employee> allemployee = new ArrayList<>();
 
+    public Company(){}
     public Company(String name){
         this.companyName = name;
+        this.employeesNumber = allemployee.size();
     }
-
+    public void setEmployeesNumber(){
+        this.employeesNumber = allemployee.size();
+    }
     public int getEmployeesNumber() {
-        return allemployee.size();
+        return this.employeesNumber;
     }
     public List<Employee> getAllemployee(){
         return allemployee;

@@ -26,4 +26,7 @@ public class CompanyService {
     }
 
 
+    public void addNewCompany(Company company) {
+        allCompany.add(company);
+    }
 }
