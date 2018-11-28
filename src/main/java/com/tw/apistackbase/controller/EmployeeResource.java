@@ -56,7 +56,7 @@ public class EmployeeResource {
     ResponseEntity<String> addNewEmployee(@RequestBody Employee employee){
         employeeService.addNewEmployee(employee);
         URI location = URI.create("/employees/"+employee.getId());
-        return ResponseEntity.created(location).header("Header").body("Employeee Created.");
+        return ResponseEntity.created(location).header("Status",HttpStatus.CREATED.toString()).body("Employeee Created.");
     }
     @PutMapping(value = "/employees/{id}", produces = "application/json")
     String changeEmployeeInfo(@RequestBody Employee employee, @PathVariable int id){
