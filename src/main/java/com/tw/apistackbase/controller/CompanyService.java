@@ -37,4 +37,8 @@ public class CompanyService {
     public List<Employee> getEmployeebyCompany(int index) {
         return allCompany.get(index-1).getAllemployee();
     }
+
+    public List<Company> getCompanybyPageRange(int start, int end) {
+        return allCompany.subList(start, end);
+    }
 }

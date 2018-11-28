@@ -14,7 +14,10 @@ public class CompanyResource {
     public CompanyResource(CompanyService service){this.companyService = service;}
 
     @GetMapping(value = "/companies", produces = "application/json")
-    List<Company> getAllCompany(){
+    List<Company> getAllCompany(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                @RequestParam(value = "pageSize", required = false, defaultValue = "0") int pageSize){
+        if (page != 0 && pageSize !=0)
+            return this.companyService.getCompanybyPageRange(page-1, page+pageSize-1);
         return this.companyService.getAllCompany();
     }
 
@@ -32,6 +35,7 @@ public class CompanyResource {
     {
         return this.companyService.getEmployeebyCompany(index);
     }
+
 
 
 }
